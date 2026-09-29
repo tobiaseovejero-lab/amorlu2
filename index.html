@@ -3,217 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un Regalo Para Ti ❤️</title>
+<title>Para Mi Princesa ❤️</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI', sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background:linear-gradient(135deg,#ffd6e7,#ffc2d1,#ffe5ec);
-    overflow:hidden;
+background:linear-gradient(135deg,#ffd6e7,#ffe4ee,#fff0f5);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 }
 
-/* Corazones flotando */
 .hearts{
-    position:fixed;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    z-index:0;
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
 }
 
 .heart{
-    position:absolute;
-    color:#ff6b9a;
-    font-size:20px;
-    animation:float 8s linear infinite;
-    opacity:0.7;
+position:absolute;
+font-size:20px;
+animation:subir linear forwards;
 }
 
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:0;
-    }
-    20%{
-        opacity:1;
-    }
-    to{
-        transform:translateY(-120px);
-        opacity:0;
-    }
+@keyframes subir{
+from{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
 }
 
-.container{
-    position:relative;
-    z-index:2;
-    text-align:center;
+.gift-container{
+text-align:center;
+transition:1s;
 }
 
-/* Caja */
 .gift-box{
-    position:relative;
-    width:220px;
-    height:180px;
-    margin:auto;
+width:220px;
+height:180px;
+position:relative;
+margin:auto;
 }
 
-.box-bottom{
-    width:220px;
-    height:140px;
-    background:#ff8fab;
-    border-radius:10px;
-    position:absolute;
-    bottom:0;
-    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+.box{
+width:220px;
+height:140px;
+background:#ff8fab;
+position:absolute;
+bottom:0;
+border-radius:12px;
 }
 
-.box-bottom::before{
-    content:"";
-    position:absolute;
-    left:95px;
-    width:30px;
-    height:140px;
-    background:#fff;
+.box::before{
+content:"";
+position:absolute;
+left:95px;
+width:30px;
+height:140px;
+background:white;
 }
 
 .lid{
-    position:absolute;
-    width:240px;
-    height:50px;
-    left:-10px;
-    top:0;
-    background:#ff7096;
-    border-radius:10px;
-    transform-origin:left center;
-    transition:1.5s;
-    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+width:240px;
+height:50px;
+background:#ff5c8a;
+position:absolute;
+left:-10px;
+top:0;
+border-radius:12px;
+transform-origin:left center;
+transition:1.2s;
 }
 
 .lid::before{
-    content:"";
-    position:absolute;
-    left:105px;
-    width:30px;
-    height:50px;
-    background:white;
+content:"";
+position:absolute;
+left:105px;
+width:30px;
+height:50px;
+background:white;
 }
 
 .open .lid{
-    transform:rotate(-120deg);
+transform:rotate(-120deg);
 }
 
-/* Botón */
 button{
-    margin-top:40px;
-    padding:14px 28px;
-    border:none;
-    border-radius:30px;
-    background:#ff5d8f;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:0.3s;
+margin-top:35px;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:40px;
+background:#ff4f87;
+color:white;
+cursor:pointer;
 }
 
 button:hover{
-    transform:scale(1.05);
-    background:#ff3f7d;
+transform:scale(1.05);
 }
 
-/* Carta */
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(0);
+}
+
 .letter{
-    position:absolute;
-    top:45%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    background:white;
-    width:320px;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
-    transition:1.2s;
-    z-index:999; /* agregado */
+position:absolute;
+width:90%;
+max-width:650px;
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 20px 50px rgba(0,0,0,.15);
+text-align:center;
+opacity:0;
+transform:scale(.5);
+transition:1s;
 }
 
-.letter h2{
-    color:#ff4f87;
-    margin-bottom:15px;
+.show{
+opacity:1;
+transform:scale(1);
 }
 
-.letter p{
-    color:#555;
-    font-size:20px;
+h1{
+color:#ff4f87;
+margin-bottom:20px;
 }
 
-.show-letter{
-    transform:translate(-50%,-50%) scale(1);
+p{
+font-size:20px;
+line-height:1.8;
+color:#555;
 }
+
+.signature{
+margin-top:25px;
+font-size:24px;
+color:#ff4f87;
+font-weight:bold;
+}
+
 </style>
-
 </head>
 <body>
 
 <div class="hearts"></div>
 
-<div class="container">
-    <div class="gift-box" id="giftBox">
-        <div class="lid"></div>
-        <div class="box-bottom"></div>
-    </div>
+<div id="giftContainer" class="gift-container">
 
-    <button onclick="openGift()">
-        💝 Presione aquí para abrir el regalo
-    </button>
+<div id="giftBox" class="gift-box">
+<div class="lid"></div>
+<div class="box"></div>
 </div>
 
-<div class="letter" id="letter">
-    <h2>💖 Para mi princesa 💖</h2>
-    <p>
-        Te amo mucho princesa ❤️<br><br>
-        Gracias por hacer mis días más felices y llenos de amor.
-    </p>
+<button onclick="abrirRegalo()">
+💝 Presione aquí para abrir el regalo
+</button>
+
+</div>
+
+<div id="letter" class="letter">
+
+<h1>💖 Para mi princesa Luciana 💖</h1>
+
+<p>
+Mi amor,
+
+Quiero que sepas que cada día a tu lado se convierte en uno de mis recuerdos favoritos.
+
+Gracias por tu compañía, por tu sonrisa, por los momentos simples que terminan siendo los más especiales y por llenar mi vida de felicidad.
+
+No importa cuántos días pasen, siempre encuentro nuevas razones para admirarte, cuidarte y elegirte.
+
+Eres una parte muy importante de mi vida y deseo seguir construyendo recuerdos hermosos junto a vos.
+
+Te amo muchísimo, princesa.
+
+❤️
+</p>
+
+<div class="signature">
+Con todo mi amor ❤️
+</div>
+
 </div>
 
 <script>
-function openGift() {
-    document.getElementById("giftBox").classList.add("open");
 
-    setTimeout(() => {
-        document.getElementById("letter")
-        .classList.add("show-letter");
-    }, 900);
+function abrirRegalo(){
+
+document.getElementById("giftBox")
+.classList.add("open");
+
+setTimeout(() => {
+
+document.getElementById("giftContainer")
+.classList.add("hidden");
+
+document.getElementById("letter")
+.classList.add("show");
+
+},1200);
+
 }
 
-// Corazones flotando
-const heartsContainer = document.querySelector(".hearts");
+const hearts=document.querySelector(".hearts");
 
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+setInterval(()=>{
 
-    heart.style.left = Math.random() * 100 + "%";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
-    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+let heart=document.createElement("div");
 
-    heartsContainer.appendChild(heart);
+heart.className="heart";
+heart.innerHTML="💖";
 
-    setTimeout(() => {
-        heart.remove();
-    }, 10000);
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(15+Math.random()*30)+"px";
+heart.style.animationDuration=(4+Math.random()*6)+"s";
 
-}, 400);
+hearts.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},10000);
+
+},350);
+
 </script>
 
 </body>
